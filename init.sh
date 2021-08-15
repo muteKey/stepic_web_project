@@ -1,3 +1,9 @@
+if ! which nginx > /dev/null 2>&1; then
+	sudo apt update
+	sudo apt install nginx
+fi
+
+
 if [ ! -d "/home/box/web" ] 
 then
 	mkdir -p web/public/img
@@ -6,6 +12,7 @@ then
 	mkdir -p web/uploads
 	mkdir -p web/etc
 fi
+
 
 sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
